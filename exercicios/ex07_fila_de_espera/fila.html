@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let fila = ['Roberto', 'Leticia', 'Crenilda', 'Claudiney', 'Antônio'];
+        let mensagem = ''
+        let opcao = ''
+        let adicionados = []
+
+        for (let i = 0; i < fila.length; i++) {
+            const paciente = fila[i]
+            mensagem += `${i} - ${paciente}\n`
+        }
+
+
+        do {
+
+            opcao = prompt(`Fila para a consulta médica:\n\n${mensagem}\n1. Adicionar novo paciente a fila.\n2. Atender próximo paciente.\n3. Sair`)
+
+            switch (opcao) {
+                case '1':
+                    let newPatient = prompt('Qual o nome no novo paciente?')
+                    fila.push(newPatient)
+                    break
+
+                case '2':
+                    fila.shift()
+
+
+            }
+        } while (opcao !== '3')
+
+        console.log(fila)
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>Consultório Médico</h1>
+</body>
+
+</html>

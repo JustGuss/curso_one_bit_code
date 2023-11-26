@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imobiliaria</title>
+
+    <script>
+
+        const imoveis = []
+        let opcao = ""
+
+        do {
+            opcao = prompt(`Bem vindo ao cadastro de imóveis digital.\nNúmero de imóveis cadastrados: ${imoveis.length}\n\n Escolha uma das opções:\n1. Cadastrar um novo imóvel.\n2. Exibir Imóveis cadastrados.\n3. Sair`)
+
+            switch (opcao) {
+                case '1':
+                    const imovel = {}
+
+                    imovel.proprietario = prompt('Qual o nome do proprietário desse imóvel?')
+                    imovel.quartos = Number(prompt('Quantos quartos esse imóvel possui?'))
+                    imovel.banheiros = Number(prompt('Quantos banheiros esse imóvel possui?'))
+                    imovel.garagem = prompt('Esse imóvel possui garagem? (sim/não)')
+
+                    const confirmacao = confirm(`Deseja salvar essas informações?\nProprietário do imóvel: ${imovel.proprietario}\nQuartos: ${imovel.quartos}\nBanheiros: ${imovel.banheiros}\nGaragem: ${imovel.garagem}`)
+
+                    if (confirmacao) {
+                        imoveis.push(imovel)
+                        alert('Imóvel salvo.')
+                    }else{
+                        alert('Voltando ao menu...')
+                    }
+                    break
+                case '2':
+                    for (let i; i < imoveis.length; i++) {
+                        alert('Imoveis Cadastrados: imovel' + (i + 1) + '\nProprietário:' + imoveis[i].proprietario + '\nQuantidade de quartos' + imoveis[i].quartos + '\nQuantidade de banheiros' + imoveis[i].banheiros + '\nGaragem:' + imoveis[i].garagem)
+                    }
+                    break
+                case '3':
+                    alert('Encerrando...')
+                    break
+                default:
+                    alert('opção inválida')
+            }
+        } while (opcao !== '3')
+
+    </script>
+
+</head>
+
+<body>
+    Imobiliaria
+</body>
+
+</html>
+
+
+
+
+1234567890123467890123456789
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</head>
+
+<body>
+    <h1>Cadastro de Imóveis</h1>
+
+</body>
+
+</html>
