@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <h1>Criando Novos Elementos no Dom</h1>
+    
+    <button onclick="addInput()">Adicionar Input</button>
+
+    <ul id="inputs"></ul>
+
+ <script>
+        function addInput(){
+            const ul = document.getElementById('inputs')
+            const newLi = document.createElement('li')
+            newLi.className = 'list-item'
+            newLi.innerHTML = '<span>item 1</pan>' //Pode abrir brechas de segurança
+            newLi.innerText = 'novo input'
+
+            const newInput = document.createElement('input')
+            newInput.type = 'test'
+            newInput.name = 'input'
+
+            newLi.appendChild(newInput)
+            ul.appendChild(newLi)
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+    </body>
+</html>
