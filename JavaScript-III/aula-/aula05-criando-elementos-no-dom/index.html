@@ -15,18 +15,22 @@
 
  <script>
         function addInput(){
-            const ul = document.getElementById('inputs')
+            const ul = document.getElementById('inputs') 
+            //criação da variável linkada ao elemento no HTML
+
             const newLi = document.createElement('li')
             newLi.className = 'list-item'
-            newLi.innerHTML = '<span>item 1</pan>' //Pode abrir brechas de segurança
             newLi.innerText = 'novo input'
+            //criação de um elemento "li" no HTML
 
             const newInput = document.createElement('input')
             newInput.type = 'test'
             newInput.name = 'input'
+            //criação de um elemento "input" no HTML
 
             newLi.appendChild(newInput)
             ul.appendChild(newLi)
+            //transformando os elementos em fihos
         }
 
 
