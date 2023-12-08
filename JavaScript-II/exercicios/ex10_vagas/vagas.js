@@ -11,47 +11,38 @@
 // A opção de inscrever um candidato em uma vaga de pedir o nome do candidato, o índice da vaga e então uma confirmação exibindo as informações da vaga antes de salvar o candidato na vaga.
 // A opção de excluir uma vaga deve pedir o índice da vaga, mostrar suas informações e pedir que o usuário confirme a exclusão da vaga antes de realmente exclui-la.
 
-let opcao = ''
-const vagas = [];
-let newArray
+const vagas = []
 
-function listarVagas(){
-    
+function listarVagas() {
+    const vagasEmTexto = vagas.reduce(function (textoFinal, vaga, indice) {
+        //1. nome, (x candidatos)
+        textoFinal += indice + '. '
+        textoFinal += vaga.nome
+        textoFinal += " (" + vaga.candidatos.length + " candidatos)\n"
+        return textoFinal
+    }, "")
+    alert(vagasEmTexto)
 }
 
-function novaVaga(){
-    newArray = {
-        nome: prompt('Digite um nome para a vaga:'),
-        descrição: prompt('Digite uma descrição para a vaga:'),
-        dataLimite: prompt('Digite uma data limite para esta vaga:')
+function novaVaga() {
+    const nome = prompt("Informe um nome para a vaga:")
+    const descricao = prompt('Informe uma descrição para a vaga:')
+    const dataLimite = prompt('Informe uma data limite (dd/m/aaaa) para a vaga:')
+
+    const confirm = confirm(
+        'Deseja criar uma nova vaga com estas informações?\n' +
+        'Nome: ' + nome + "\nDescrição: " + descricao + '\nData limite: ' + dataLimite
+    )
+    if(confirm) {
+        const novaVaga = {nome, descricao, dataLimite, candidatos: [] =}
+        vagas.push(novaVaga)
+        alert('Nova vaga adicionada.')
     }
-    vagas.push(newArray)
 }
 
-function excluirVaga(){
+function exebirVaga() {
+    const indice = prompt('Informe o índice da vaga que deseja exibir:')
+    const vaga = vagas[indice]
 
-}
-
-function visualizarVaga(){
-    
-}
-
-function exibirMenu(){
-   opcao = prompt(
-    '1. Listar vagas'+
-    '\n2. Adicionar uma nova vaga'+
-    '\n3. Excluir uma das vagas existentes'+
-    '\n4. Visualizar uma vaga'+
-    '\n5. Inscrever um candidato a uma vaga'
-    
-   )
-}
-
-function executar(){
-     do{
-        switch(opcao){
-            case '1':
-                exibirMenu()
-        }
-    } while(opcao !='sair')
+    const candidatosEmTexto = vaga.candidatos.reduce(funciont (textoFinal, candidato))
 }
