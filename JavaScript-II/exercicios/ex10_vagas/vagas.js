@@ -16,7 +16,7 @@ const vagas = []
 function listarVagas() {
     const vagasEmTexto = vagas.reduce(function (textoFinal, vaga, indice) {
         //1. nome, (x candidatos)
-        textoFinal += indice + '. '
+        textoFinal += indice + 1 + '. '
         textoFinal += vaga.nome
         textoFinal += " (" + vaga.candidatos.length + " candidatos)\n"
         return textoFinal
@@ -29,20 +29,118 @@ function novaVaga() {
     const descricao = prompt('Informe uma descrição para a vaga:')
     const dataLimite = prompt('Informe uma data limite (dd/m/aaaa) para a vaga:')
 
-    const confirm = confirm(
+    const confirmacao = confirm(
         'Deseja criar uma nova vaga com estas informações?\n' +
         'Nome: ' + nome + "\nDescrição: " + descricao + '\nData limite: ' + dataLimite
     )
-    if(confirm) {
-        const novaVaga = {nome, descricao, dataLimite, candidatos: [] =}
+    if (confirmacao) {
+        const novaVaga = { nome, descricao, dataLimite, candidatos: [] }
         vagas.push(novaVaga)
         alert('Nova vaga adicionada.')
     }
 }
 
-function exebirVaga() {
+function exibirVaga() {
     const indice = prompt('Informe o índice da vaga que deseja exibir:')
+    
+    if(indice >= vagas.length || indice < 0){
+        alert('Não existe uma vaga com este índice')
+        return 
+        //Depois do return a function para de ser executada
+        //Dessa forma o código fica mais simples invés de colocar o restante da function dentro de um 'else'
+    }
+    
     const vaga = vagas[indice]
 
-    const candidatosEmTexto = vaga.candidatos.reduce(funciont (textoFinal, candidato))
+    const candidatosEmTexto = vaga.candidatos.reduce(function (textoFinal, candidato) {
+        return textoFinal + '\n - ' + candidato
+    }, "")
+
+    alert(
+        'Vaga nº ' + indice +
+        '\nNome: ' + vaga.nome +
+        '\nDescrição: ' + vaga.descricao +
+        '\nData limite: ' + vaga.dataLimite +
+        '\nQuantidade de candidatos: ' + vaga.candidatos.length +
+        '\nCandidatos inscritos: ' + candidatosEmTexto
+    )
 }
+
+function inscreverCandidato() {
+    const candidato = prompt('Informe o nome do(a) candidato(a):')
+    const indice = prompt('Informe o indice da vaga para a qual o(a) candidato(a) deseja se inscrever:')
+    const vaga = vagas[indice]
+
+    const confirmacao = confirm(
+        'Deseja inscrever o candidato(a) ' + candidato + ' na vaga ' + indice + '?\n' +
+        'Nome: ' + vaga.nome + '\nDescrição: ' + vaga.descricao + '\nData limite: ' + vaga.dataLimite
+    )
+
+    if (confirmacao) {
+        vaga.candidatos.push(candidato)
+        alert('Inscrição realizada.')
+    }
+}
+
+function excluirVaga() {
+    const indice = prompt('Informe o indice da vaga que deseja excluir:')
+    const vaga = vagas[indice]
+
+    const confirmacao = confirm(
+        'Tem certeza que deseja excluir essa vaga' + indice + '?\n' +
+        'Nome: ' + vaga.nome + '\nDescrição: ' + vaga.descricao + '\nData limite: ' + vaga.dataLimite
+    )
+    if (confirmacao) {
+        vagas.splice(indice, 1)
+        alert('Vaga excluída.')
+    }
+}
+
+function exibirMenu() {
+    const opcao = prompt(
+        'Cadastro de Vagas de Emprego\n' +
+        'Escolha uma das opções:\n' +
+        '1. Listar vagas disponíveis\n' +
+        '2. Criar uma nova vaga\n' +
+        '3. Vizualizar uma vaga\n' +
+        '4. Inscrever um(a) candidato(a)\n' +
+        '5. Excluir uma vaga\n' +
+        '6. Sair'
+    )
+
+    return opcao
+}
+
+function executar() {
+    let opcao = ''
+
+    do {
+        opcao = exibirMenu()
+
+        switch (opcao) {
+            case '1':
+                listarVagas()
+                break
+            case '2':
+                novaVaga()
+                break
+            case '3':
+                exibirVaga()
+                break
+            case '4':
+                inscreverCandidato()
+                break
+            case '5':
+                excluirVaga()
+                break
+            case '6':
+                alert('Encerrando...')
+                break
+            default:
+                alert('Opçao inválida.')
+        }
+
+    } while (opcao !== '6')
+}
+
+executar()
