@@ -1,7 +1,8 @@
 function addContact(){
-    const contactSection = document.getElementById('contacts-list');
+    const contactSection = document.getElementById('contacts-list'); //seleciona o container "section" da pagina HTML.
 
-    const h3 = document.createElement('h3');
+    const h3 = document.createElement('h3'); //cria o elemento h3 porém para faze-lo aparecer na pagina HTML é preciso adiciona-lo como elemento filho dentro do container utilizando o "appendChild".
+
     h3.innerText = 'Contato';
 
     const ul = document.createElement('ul');
@@ -12,7 +13,7 @@ function addContact(){
     nameInput.type = 'text';
     nameInput.name = 'fullname';
     nameLi.appendChild(nameInput);
-    ul.appendChild(nameLi);
+    ul.appendChild(nameLi); //"appendChild" adiciona o elemento como filho de outro elemento.
 
     const phoneLi = document.createElement('li');
     phoneLi.innerText = 'Telefone: ';
@@ -31,8 +32,10 @@ function addContact(){
     addressLi.appendChild(addressInput)
     ul.appendChild(addressLi)
 
-    contactSection.append(h3, ul)
+    contactSection.append(h3, ul); //"append" ao contrário da tag "appendChild", permite adicionar mais elementos de uma só vez.
 
 }
 
-function removeContact()
+function removeContact(){
+    
+}
