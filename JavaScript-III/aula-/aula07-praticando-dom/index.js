@@ -37,5 +37,11 @@ function addContact(){
 }
 
 function removeContact(){
-    
+    const contactSection = document.getElementById('contacts-list');
+
+    const titles = document.getElementsByTagName('h3');
+    const contacts = document.getElementsByTagName('ul');
+
+    contactSection.removeChild(titles[titles.length - 1]);
+    contactSection.removeChild(contacts[contacts.length - 1])
 }
