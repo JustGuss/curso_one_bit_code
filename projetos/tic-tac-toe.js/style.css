@@ -22,3 +22,8 @@ body {
   #gameBoard span.win{
     background-color: #25a340;
   }
+
+  
+.cursor-pointer {
+  cursor: pointer;
+}
