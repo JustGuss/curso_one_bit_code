@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operador Spread</title>
+
+
+    <script>
+        const towns = ['Prontera', 'Izlude', 'Payon', 'Alberta', 'Geffen', 'Morroc']
+
+        console.log(towns)
+        console.log(...towns)
+        console.log(...towns[0])
+
+        const townsCopy = towns
+        //O operador Spread pode ser utilizado para clonar um array, podendo modificar sua cópia sem alterar o array original
+
+        townsCopy.pop()
+        townsCopy.pop()
+        townsCopy.push('Juno')
+
+        console.log({ towns, townsCopy })
+
+        const townsClone = [...towns]
+
+        townsClone.push('Aldebaran')
+
+        console.log({ towns, townsCopy, townsClone })
+
+        const townsObj = { ...towns }
+        const townsObjClone = { ...townsObj }
+
+        townsObjClone.test = 'Test'
+
+        console.log({ townsObj, townsObjClone })
+    </script>
+
+
+</head>
+
+<body>
+    <h1>Operador Spread</h1>
+
+
+
+</body>
+
+</html>
