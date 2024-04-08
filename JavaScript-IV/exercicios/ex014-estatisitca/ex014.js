@@ -1,31 +1,54 @@
-//Média aritmética simples
+//Função Média Aritmética Simples
 
-const MediaSimples = (...numbers) => {
-    let sum = numbers.reduce((accum, current) => accum + current, 0);
-    return sum / 2;
-}
-console.log(MediaSimples(1, 2, 3, 4)) // 1 + 2 + 3 + 4 / 2 = 5
+const average = (...numbers) => {
+    const sum = numbers.reduce((accum, num) => accum + num, 0)
+    return sum / numbers.length
+  }
+  
+  console.log(`Média Aritmética Simples: ${average(3, 6, 10, 9)}`)
 
+//Função daa Média Aritmética Ponderada
 
-//Média Aritmética Ponderada
-
-let n1 = {
-    numero: 2,
-    peso: 2
-}
-
-const n2 = {
-    numero: 3,
-    peso: 3
+const weightedAverage = (...entries) => {
+    const sum = entries.reduce((accum, { number, weight }) => accum + (number * (weight ?? 1)), 0);
+    const weightSum = entries.reduce((accum, entry) => accum + (entry.weight ?? 1), 0);
+    return sum / weightSum;
 }
 
-const n3 = {
-    numero: 4,
-    peso: 4
-}
+console.log(`Média Ponderada: ${weightedAverage(
+    { number: 9, weight: 3 },
+    { number: 7 },
+    { number: 10, weight: 1 },
+)}`)
 
-const MediaPonderada = (n1, n2, n3) => {
-    const sum = (n1.numero * n1.peso) + (n2.numero * n2.peso) + (n3.numero * n3.peso);
-    return sum / 2;
-}
-console.log(MediaPonderada())
+
+//Função da Mediana
+
+const median = (...numbers) => {
+    const orderedNumbers = [...numbers].sort((a, b) => a - b)
+    const middle = Math.floor(orderedNumbers.length / 2)
+    if (orderedNumbers.length % 2 !== 0) {
+      return orderedNumbers[middle]
+    }
+    const firstMedian = orderedNumbers[middle - 1]
+    const secondMedian = orderedNumbers[middle]
+    return average(firstMedian, secondMedian)
+  }
+  
+  console.log(`Mediana: ${median(2, 5, 99, 4, 42, 7)}`)
+  console.log(`Mediana: ${median(15, 14, 8, 7, 3)}`)
+
+
+  //Função da Moda
+
+  const mode = (...numbers) => {
+    // [ [n, qtd], [n, qtd], [n, qtd] ]
+    const quantities = numbers.map(num => [
+      num,
+      numbers.filter(n => num === n).length
+    ])
+    quantities.sort((a, b) => b[1] - a[1])
+    return quantities[0][0]
+  }
+  
+  console.log(`Moda: ${mode(1, 1, 99,99,99,99,99,99,99,99, 5, 4, 9, 7, 4, 3, 5, 2, 4, 0, 4)}`)
